@@ -37,8 +37,8 @@ plt.grid(True)
 # logit
 plt.subplot(224)
 plt.plot(x, y)
-plt.yscale('logit')
-plt.title('logit')
+plt.yscale('log')
+plt.title('log')
 plt.grid(True)
 
 plt.show()

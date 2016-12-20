@@ -35,19 +35,26 @@ print_features(train, 'Sex', 'Survived', 'Sex to surviced', 411, 'ro')
 print_features(train, 'Age', 'Survived', 'Age to surviced', 412, 'go')
 print_features(train, 'Fare', 'Survived', 'Fare to surviced', 413, 'bo')
 print_features(train, 'Pclass', 'Survived', 'Pclass to surviced', 414, 'yo')
-plt.show()
+#plt.show()
 
-# Create the target and features numpy arrays: target, features_one
+# Create the target and features numpy arrays: target, features
 target = train["Survived"].values
-features_one = train[["Sex", "Age", "Fare"]].values
-#features_one = train[["Pclass", "Sex", "Age", "Fare"]].values
+features = train[["Pclass", "Sex", "Age", "Fare"]].values
 
-# Fit your first decision tree: my_tree_one
-my_tree_one = tree.DecisionTreeClassifier()
-my_tree_one = my_tree_one.fit(features_one, target)
+# Fit your first decision tree: my_tree
+my_tree = tree.DecisionTreeClassifier()
+my_tree = my_tree.fit(features, target)
 
 # Look at the importance and score of the included features
-print(my_tree_one.feature_importances_)
-print(my_tree_one.score(features_one, target))
+print(my_tree.feature_importances_)
+print(my_tree.score(features, target))
 
-
+plt.figure(2)
+plt.xlabel("Features")
+plt.ylabel("Importances")
+plt.title("Importance and score of the included features")
+plt.xticks(np.arange(4), ("Pclass", "Sex", "Age", "Fare") )
+plt.plot(my_tree.feature_importances_, 'ro')
+score_str = "Score:" + str(my_tree.score(features, target))
+plt.text(1, 0.2, score_str, fontsize=15, verticalalignment="top", horizontalalignment="left")
+plt.show()
