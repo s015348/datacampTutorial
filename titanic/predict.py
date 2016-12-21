@@ -1,10 +1,7 @@
 # From:https://campus.datacamp.com
 # Import the libraries
-import csv as csv
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import sklearn.tree as tree
 import utility as u
 
 # Get the model
